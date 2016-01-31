@@ -11,7 +11,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
@@ -710,6 +709,13 @@ public class JssFrame extends javax.swing.JFrame implements LocaleChangeListener
             }
 
         });
+
+        // There should be an empty command line available at this point
+        String commandLine = shellController.getCommandLine();
+        if (commandLine == null || !commandLine.isEmpty()) {
+            // but if it does not (publication of actions initializing), add one
+            shellController.addNewCommandLine();
+        }
     }
 
     // #########################################################################
