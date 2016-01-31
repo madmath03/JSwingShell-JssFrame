@@ -92,8 +92,8 @@ public class LocaleChangeNotifier {
      * as many times as it is added.</p>
      *
      * <p>
-     * If {@code listener} is null, no exception is thrown and no action is
-     * taken.</p>
+     * If {@code listener} is {@code null}, no exception is thrown and no action
+     * is taken.</p>
      *
      * @param listener The {@code LocaleChangeListener} to be added
      *
@@ -108,7 +108,7 @@ public class LocaleChangeNotifier {
      *
      * <p>
      * This removes a {@code LocaleChangeListener} that was registered for the
-     * {@code Locale}.</p>
+     * {@code LocaleChangeNotifier}.</p>
      *
      * <p>
      * If {@code listener} was added more than once to the same event source, it
@@ -130,7 +130,7 @@ public class LocaleChangeNotifier {
      * associated with the {@code Locale}.
      *
      * @return all of the {@code LocaleChangeListener}s associated with the
-     * {@code Locale}.
+     * {@code LocaleChangeNotifier}.
      */
     public synchronized List<LocaleChangeListener> getLocaleChangeListeners() {
         return Collections.unmodifiableList(localeChangeListeners);
