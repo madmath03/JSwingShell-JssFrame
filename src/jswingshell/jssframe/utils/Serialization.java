@@ -47,7 +47,15 @@ public final class Serialization {
         Path tempJarPath = null, tempSerializedModelPath = null;
         try {
             tempJarPath = Paths.get(LocalizedJssTextAreaController.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-            tempSerializedModelPath = tempJarPath.resolve(SERIALIZED_MODEL_RELATIVE_PATH);
+            // If the path is not a directory (current behavior when packaged)
+            while (tempJarPath != null && !Files.isDirectory(tempJarPath)) {
+                tempJarPath = tempJarPath.getParent();
+            }
+            if (tempJarPath != null) {
+                tempSerializedModelPath = tempJarPath.resolve(SERIALIZED_MODEL_RELATIVE_PATH);
+            } else {
+                LOGGER.log(Level.SEVERE, "Cannot find the JAR path!");
+            }
         } catch (URISyntaxException urie) {
             LOGGER.log(Level.SEVERE, "Cannot find the JAR path", urie);
         } finally {
@@ -270,14 +278,14 @@ public final class Serialization {
                 }
 
                 // Restore AbstractActions property listeners
-                if (abstractAction != null && propertyChangeListeners != null 
+                if (abstractAction != null && propertyChangeListeners != null
                         && propertyChangeListeners.length > 0) {
                     for (PropertyChangeListener listener : propertyChangeListeners) {
                         abstractAction.addPropertyChangeListener(listener);
                     }
                 }
                 // Restore AbstractListModel list data listeners
-                if (abstractListModel != null && listDataListeners != null 
+                if (abstractListModel != null && listDataListeners != null
                         && listDataListeners.length > 0) {
                     for (ListDataListener listener : listDataListeners) {
                         abstractListModel.addListDataListener(listener);
