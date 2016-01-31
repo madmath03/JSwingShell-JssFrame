@@ -282,7 +282,7 @@ public final class LocaleAction extends jswingshell.action.AbstractJssComboActio
         @Override
         protected String initBriefHelp() {
             String briefHelp;
-            String localeNameToDisplay = getDataItem().getDisplayName(ResourceUtils.getLocale());
+            String localeNameToDisplay = getDataItem().getDisplayName(getDataItem());
             try {
                 briefHelp = ResourceUtils.getMessage(INTERNAL_COMMAND_BRIEF_HELP_KEY, localeNameToDisplay);
             } catch (MissingResourceException e) {
