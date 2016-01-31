@@ -15,12 +15,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import jswingshell.IJssController;
 
 /**
- * Action to display available commands.
+ * Action to open and execute a shell file.
  *
  * <p>
- * This action inherits from the standard
- * {@code jswingshell.action.LoadCommandFile} and initializes GUI related
- * properties:</p>
+ * This action inherits from the {@code LoadCommandFile} and initializes GUI
+ * related properties:</p>
  * <ul>
  * <li>{@code Action.NAME}</li>
  * <li>{@code Action.SMALL_ICON}</li>
@@ -111,12 +110,12 @@ public final class OpenAction extends LoadCommandFile {
             try {
                 description = ResourceUtils.getMessage(COMMAND_RUN_FILE_FILTER_DESCRIPTION_KEY);
             } catch (MissingResourceException e1) {
-                LOGGER.log(Level.SEVERE, "Resource not found: \""+COMMAND_RUN_FILE_FILTER_DESCRIPTION_KEY+"\"", e1);
+                LOGGER.log(Level.SEVERE, "Resource not found: \"" + COMMAND_RUN_FILE_FILTER_DESCRIPTION_KEY + "\"", e1);
                 description = "Shell file";
             }
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     description, "shell", "txt");
-            
+
             // Open file chooser and select file
             fileChooser.setFileFilter(filter);
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -141,7 +140,7 @@ public final class OpenAction extends LoadCommandFile {
         try {
             ResourceUtils.setTextAndMnemonic(this, ACTION_LABEL_KEY);
         } catch (MissingResourceException e) {
-            LOGGER.log(Level.SEVERE, "Resource not found: \""+ACTION_LABEL_KEY+"\"", e);
+            LOGGER.log(Level.SEVERE, "Resource not found: \"" + ACTION_LABEL_KEY + "\"", e);
             putValue(Action.NAME, ACTION_LABEL);
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
