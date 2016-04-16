@@ -127,7 +127,7 @@ public final class SelectAllAction extends jswingshell.action.AbstractJssAction 
 
     // #########################################################################
 
-    public SelectAllAction(JssTextAreaController shellController, String[] args) {
+    public SelectAllAction(JssTextAreaController shellController, String... args) {
         super(ACTION_LABEL, shellController, args);
         putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_A, ActionEvent.CTRL_MASK));
@@ -136,11 +136,11 @@ public final class SelectAllAction extends jswingshell.action.AbstractJssAction 
     }
 
     public SelectAllAction(JssTextAreaController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
     public SelectAllAction() {
-        this(null, null);
+        this(null, (String[]) null);
     }
 
     // #########################################################################
@@ -160,7 +160,7 @@ public final class SelectAllAction extends jswingshell.action.AbstractJssAction 
     }
 
     @Override
-    public int run(IJssController shellController, String[] args) {
+    public int run(IJssController shellController, String... args) {
         int commandReturnStatus = AbstractJssAction.SUCCESS;
 
         if (shellController == null || !(shellController.getView() instanceof JssTextArea)) {
@@ -199,6 +199,17 @@ public final class SelectAllAction extends jswingshell.action.AbstractJssAction 
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
     
 }

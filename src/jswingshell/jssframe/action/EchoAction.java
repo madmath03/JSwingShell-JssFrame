@@ -129,30 +129,30 @@ public final class EchoAction extends AbstractJssAction implements LocaleChangeL
     }
 
     // #########################################################################
-    public EchoAction(String name, Icon icon, IJssController shellController, String[] args) {
+    public EchoAction(String name, Icon icon, IJssController shellController, String... args) {
         super(name, icon, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
-    public EchoAction(String name, IJssController shellController, String[] args) {
+    public EchoAction(String name, IJssController shellController, String... args) {
         super(name, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
-    public EchoAction(IJssController shellController, String[] args) {
+    public EchoAction(IJssController shellController, String... args) {
         super(shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
     public EchoAction(IJssController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
     public EchoAction() {
-        this(null, null);
+        this(null, (String[]) null);
     }
 
     // #########################################################################
@@ -172,7 +172,7 @@ public final class EchoAction extends AbstractJssAction implements LocaleChangeL
     }
 
     @Override
-    public int run(IJssController shellController, String[] args) {
+    public int run(IJssController shellController, String... args) {
         int commandReturnStatus = AbstractJssAction.SUCCESS;
 
         if (shellController == null) {
@@ -201,6 +201,17 @@ public final class EchoAction extends AbstractJssAction implements LocaleChangeL
     @Override
     public void localeChanged(PropertyChangeEvent evt) {
         resetHelp();
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

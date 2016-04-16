@@ -131,7 +131,7 @@ public final class ToggleToolbarLocaleCombo extends jswingshell.action.AbstractJ
     // #########################################################################
     private transient JssFrame frame;
 
-    public ToggleToolbarLocaleCombo(boolean selected, JssFrame frame, JssTextAreaController shellController, String[] args) {
+    public ToggleToolbarLocaleCombo(boolean selected, JssFrame frame, JssTextAreaController shellController, String... args) {
         super(selected, ACTION_LABEL, shellController, args);
         if (frame == null) {
             throw new IllegalArgumentException("Frame is null");
@@ -140,16 +140,16 @@ public final class ToggleToolbarLocaleCombo extends jswingshell.action.AbstractJ
         localeChanged();
     }
 
-    public ToggleToolbarLocaleCombo(JssFrame frame, JssTextAreaController shellController, String[] args) {
+    public ToggleToolbarLocaleCombo(JssFrame frame, JssTextAreaController shellController, String... args) {
         this(false, frame, shellController, args);
     }
 
     public ToggleToolbarLocaleCombo(JssFrame frame, JssTextAreaController shellController) {
-        this(false, frame, shellController, null);
+        this(false, frame, shellController, (String[]) null);
     }
 
     public ToggleToolbarLocaleCombo(JssFrame frame) {
-        this(false, frame, null, null);
+        this(false, frame, null, (String[]) null);
     }
 
     public JssFrame getFrame() {

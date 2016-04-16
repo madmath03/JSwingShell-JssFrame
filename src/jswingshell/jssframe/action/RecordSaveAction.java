@@ -158,7 +158,7 @@ public final class RecordSaveAction extends AbstractJssAction implements LocaleC
     }
 
     @Override
-    public int run(IJssController shellController, String[] args) {
+    public int run(IJssController shellController, String... args) {
         return this.recordAction.run(args);
     }
 
@@ -189,6 +189,17 @@ public final class RecordSaveAction extends AbstractJssAction implements LocaleC
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

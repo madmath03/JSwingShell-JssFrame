@@ -137,7 +137,7 @@ public final class HelpAction extends AbstractJssAction implements LocaleChangeL
     }
 
     // #########################################################################
-    public HelpAction(IJssController shellController, String[] args) {
+    public HelpAction(IJssController shellController, String... args) {
         super(ACTION_LABEL, ResourceUtils.createImageIcon(ICON_KEY, ACTION_LABEL), shellController, args);
         putValue(Action.LARGE_ICON_KEY, ResourceUtils.createImageIcon(ICON_KEY, ACTION_LABEL, true));
         putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke(
@@ -147,11 +147,11 @@ public final class HelpAction extends AbstractJssAction implements LocaleChangeL
     }
 
     public HelpAction(IJssController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
     public HelpAction() {
-        this(null, null);
+        this(null, (String[]) null);
     }
 
     // #########################################################################
@@ -176,7 +176,7 @@ public final class HelpAction extends AbstractJssAction implements LocaleChangeL
     }
 
     @Override
-    public int run(IJssController shellController, String[] args) {
+    public int run(IJssController shellController, String... args) {
         int commandReturnStatus = AbstractJssAction.SUCCESS;
 
         if (shellController == null) {
@@ -247,6 +247,17 @@ public final class HelpAction extends AbstractJssAction implements LocaleChangeL
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

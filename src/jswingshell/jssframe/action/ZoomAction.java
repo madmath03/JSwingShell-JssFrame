@@ -143,10 +143,10 @@ public final class ZoomAction extends jswingshell.action.AbstractJssAction imple
     private transient Font defaultFont;
 
     public ZoomAction(JssTextAreaController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
-    public ZoomAction(JssTextAreaController shellController, String[] args) {
+    public ZoomAction(JssTextAreaController shellController, String... args) {
         super(ACTION_LABEL, shellController, args);
         if (shellController == null) {
             throw new IllegalArgumentException("Shell controller is null");
@@ -186,7 +186,7 @@ public final class ZoomAction extends jswingshell.action.AbstractJssAction imple
     }
 
     @Override
-    public int run(IJssController shellController, String[] args) {
+    public int run(IJssController shellController, String... args) {
         int commandReturnStatus = AbstractJssAction.SUCCESS;
 
         if (shellController == null || !(shellController.getView() instanceof JssTextArea)) {
@@ -254,6 +254,17 @@ public final class ZoomAction extends jswingshell.action.AbstractJssAction imple
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

@@ -160,10 +160,10 @@ public final class RecordAction extends jswingshell.action.AbstractThreadedJssAc
 
     // #########################################################################
     public RecordAction(AbstractJssController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
-    public RecordAction(AbstractJssController shellController, String[] args) {
+    public RecordAction(AbstractJssController shellController, String... args) {
         super(ACTION_LABEL, shellController, args);
         if (shellController == null) {
             throw new IllegalArgumentException("Shell controller is null");
@@ -189,7 +189,7 @@ public final class RecordAction extends jswingshell.action.AbstractThreadedJssAc
     }
 
     @Override
-    public int run(IJssController shellController, String[] args) {
+    public int run(IJssController shellController, String... args) {
         int commandReturnStatus;
 
         AbstractJssActionWorker worker = this.prepareWorker(shellController, args);
@@ -207,7 +207,7 @@ public final class RecordAction extends jswingshell.action.AbstractThreadedJssAc
     }
 
     @Override
-    protected AbstractJssActionWorker prepareWorker(IJssController shellController, String[] args) {
+    protected AbstractJssActionWorker prepareWorker(IJssController shellController, String... args) {
         RecordWorker worker = null;
 
         if (shellController != null && shellController instanceof AbstractJssController) {
@@ -387,6 +387,17 @@ public final class RecordAction extends jswingshell.action.AbstractThreadedJssAc
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

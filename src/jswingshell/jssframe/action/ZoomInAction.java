@@ -124,4 +124,10 @@ public final class ZoomInAction extends AbstractAction implements LocaleChangeLi
         putValue(Action.LONG_DESCRIPTION, zoomAction.getHelp());
     }
 
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
 }

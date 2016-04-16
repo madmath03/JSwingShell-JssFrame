@@ -131,7 +131,7 @@ public class PrintScreenAction extends jswingshell.action.AbstractThreadedJssAct
     // #########################################################################
     private transient Component printComponent;
 
-    public PrintScreenAction(Component comp, String name, Icon icon, IJssController shellController, String[] args) {
+    public PrintScreenAction(Component comp, String name, Icon icon, IJssController shellController, String... args) {
         super(name, icon, shellController, args);
         if (comp == null) {
             throw new IllegalArgumentException("Component is null");
@@ -139,7 +139,7 @@ public class PrintScreenAction extends jswingshell.action.AbstractThreadedJssAct
         this.printComponent = comp;
     }
 
-    public PrintScreenAction(Component comp, String name, IJssController shellController, String[] args) {
+    public PrintScreenAction(Component comp, String name, IJssController shellController, String... args) {
         super(name, shellController, args);
         if (comp == null) {
             throw new IllegalArgumentException("Component is null");
@@ -147,7 +147,7 @@ public class PrintScreenAction extends jswingshell.action.AbstractThreadedJssAct
         this.printComponent = comp;
     }
 
-    public PrintScreenAction(Component comp, JssTextAreaController shellController, String[] args) {
+    public PrintScreenAction(Component comp, JssTextAreaController shellController, String... args) {
         super(shellController, args);
         if (comp == null) {
             throw new IllegalArgumentException("Component is null");
@@ -156,11 +156,11 @@ public class PrintScreenAction extends jswingshell.action.AbstractThreadedJssAct
     }
 
     public PrintScreenAction(Component comp, JssTextAreaController shellController) {
-        this(comp, shellController, null);
+        this(comp, shellController, (String[]) null);
     }
 
     public PrintScreenAction(Component comp) {
-        this(comp, null, null);
+        this(comp, null, (String[]) null);
     }
 
     public Component getPrintComponent() {
@@ -188,7 +188,7 @@ public class PrintScreenAction extends jswingshell.action.AbstractThreadedJssAct
     }
 
     @Override
-    protected AbstractJssActionWorker prepareWorker(IJssController shellController, String[] args) {
+    protected AbstractJssActionWorker prepareWorker(IJssController shellController, String... args) {
         PrintScreenWorker worker = null;
 
         if (shellController != null) {

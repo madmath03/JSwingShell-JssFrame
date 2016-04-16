@@ -141,7 +141,7 @@ public final class FullScreenAction extends jswingshell.action.AbstractJssSwitch
     // #########################################################################
     private transient JFrame frame;
 
-    public FullScreenAction(boolean selected, JFrame frame, JssTextAreaController shellController, String[] args) {
+    public FullScreenAction(boolean selected, JFrame frame, JssTextAreaController shellController, String... args) {
         super(selected, ACTION_LABEL, ResourceUtils.createImageIcon(ICON_KEY, ACTION_LABEL), shellController, args);
         if (frame == null) {
             throw new IllegalArgumentException("Frame is null");
@@ -154,16 +154,16 @@ public final class FullScreenAction extends jswingshell.action.AbstractJssSwitch
         localeChanged();
     }
 
-    public FullScreenAction(JFrame frame, JssTextAreaController shellController, String[] args) {
+    public FullScreenAction(JFrame frame, JssTextAreaController shellController, String... args) {
         this(false, frame, shellController, args);
     }
 
     public FullScreenAction(JFrame frame, JssTextAreaController shellController) {
-        this(false, frame, shellController, null);
+        this(false, frame, shellController, (String[]) null);
     }
 
     public FullScreenAction(JFrame frame) {
-        this(false, frame, null, null);
+        this(false, frame, null, (String[]) null);
     }
 
     public JFrame getFrame() {
@@ -315,6 +315,17 @@ public final class FullScreenAction extends jswingshell.action.AbstractJssSwitch
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

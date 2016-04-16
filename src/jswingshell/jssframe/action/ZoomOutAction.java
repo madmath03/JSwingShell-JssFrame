@@ -124,4 +124,10 @@ public final class ZoomOutAction extends AbstractAction implements LocaleChangeL
         putValue(Action.LONG_DESCRIPTION, zoomAction.getHelp());
     }
 
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
 }

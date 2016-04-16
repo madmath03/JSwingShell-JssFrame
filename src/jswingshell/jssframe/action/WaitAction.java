@@ -119,17 +119,17 @@ public final class WaitAction extends AbstractThreadedJssAction implements Local
     }
 
     // #########################################################################
-    public WaitAction(String name, Icon icon, IJssController shellController, String[] args) {
+    public WaitAction(String name, Icon icon, IJssController shellController, String... args) {
         super(name, icon, shellController, args);
         localeChanged();
     }
 
-    public WaitAction(String name, IJssController shellController, String[] args) {
+    public WaitAction(String name, IJssController shellController, String... args) {
         super(name, shellController, args);
         localeChanged();
     }
 
-    public WaitAction(IJssController shellController, String[] args) {
+    public WaitAction(IJssController shellController, String... args) {
         super(shellController, args);
         localeChanged();
     }
@@ -161,7 +161,7 @@ public final class WaitAction extends AbstractThreadedJssAction implements Local
     }
 
     @Override
-    protected AbstractJssActionWorker prepareWorker(IJssController shellController, String[] args) {
+    protected AbstractJssActionWorker prepareWorker(IJssController shellController, String... args) {
         SleepWorker worker = null;
 
         // Sleep default value

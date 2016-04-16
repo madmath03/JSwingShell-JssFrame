@@ -141,38 +141,38 @@ public final class LocaleAction extends jswingshell.action.AbstractJssComboActio
     }
 
     public LocaleAction(Locale[] items) {
-        this(items, null, null);
+        this(items, null, (String[]) null);
     }
 
     public LocaleAction(ComboBoxModel<Locale> aModel) {
-        this(aModel, null, null);
+        this(aModel, null, (String[]) null);
     }
 
     public LocaleAction(IJssController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
     public LocaleAction(Locale[] items, IJssController shellController) {
-        this(items, shellController, null);
+        this(items, shellController, (String[]) null);
     }
 
     public LocaleAction(ComboBoxModel<Locale> aModel, IJssController shellController) {
-        this(aModel, shellController, null);
+        this(aModel, shellController, (String[]) null);
     }
 
-    public LocaleAction(IJssController shellController, String[] args) {
+    public LocaleAction(IJssController shellController, String... args) {
         super(ACTION_LABEL, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
-    public LocaleAction(Locale[] items, IJssController shellController, String[] args) {
+    public LocaleAction(Locale[] items, IJssController shellController, String... args) {
         super(items, ACTION_LABEL, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
-    public LocaleAction(ComboBoxModel<Locale> aModel, IJssController shellController, String[] args) {
+    public LocaleAction(ComboBoxModel<Locale> aModel, IJssController shellController, String... args) {
         super(aModel, ACTION_LABEL, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
@@ -271,6 +271,17 @@ public final class LocaleAction extends jswingshell.action.AbstractJssComboActio
     }
 
     // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
+    }
+
+    // #########################################################################
     public final class LocaleComboElementAction extends ComboElementAction<Locale> implements LocaleChangeListener {
 
         protected LocaleComboElementAction(AbstractJssComboAction<Locale> parentAction, Locale dataItem) {
@@ -292,7 +303,7 @@ public final class LocaleAction extends jswingshell.action.AbstractJssComboActio
             return briefHelp;
         }
 
-        // #########################################################################
+        // #####################################################################
         @Override
         public void localeChanged() {
             localeChanged(null);
@@ -302,6 +313,17 @@ public final class LocaleAction extends jswingshell.action.AbstractJssComboActio
         public void localeChanged(PropertyChangeEvent evt) {
             resetBriefHelp();
             putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
+        }
+
+        // #####################################################################
+        @Override
+        public final void putValue(String key, Object newValue) {
+            super.putValue(key, newValue);
+        }
+
+        @Override
+        public final String getDefaultCommandIdentifier() {
+            return super.getDefaultCommandIdentifier();
         }
     }
 

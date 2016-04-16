@@ -51,7 +51,7 @@ public final class SaveScreenAction extends PrintScreenAction {
     private transient Component parent;
 
     // #########################################################################
-    public SaveScreenAction(JFileChooser fileChooser, Component parent, Component comp, IJssController shellController, String[] args) {
+    public SaveScreenAction(JFileChooser fileChooser, Component parent, Component comp, IJssController shellController, String... args) {
         super(comp, ACTION_LABEL, ResourceUtils.createImageIcon(ICON_KEY, ACTION_LABEL), shellController, args);
         if (shellController == null) {
             throw new IllegalArgumentException("Shell controller is null");
@@ -74,11 +74,11 @@ public final class SaveScreenAction extends PrintScreenAction {
     }
 
     public SaveScreenAction(JFileChooser fileChooser, Component parent, Component comp, IJssController shellController) {
-        this(fileChooser, parent, comp, shellController, null);
+        this(fileChooser, parent, comp, shellController, (String[]) null);
     }
 
     public SaveScreenAction(JFileChooser fileChooser, Component parent, Component comp) {
-        this(fileChooser, parent, comp, null, null);
+        this(fileChooser, parent, comp, null, (String[]) null);
     }
 
     public JFileChooser getFileChooser() {
@@ -144,6 +144,17 @@ public final class SaveScreenAction extends PrintScreenAction {
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

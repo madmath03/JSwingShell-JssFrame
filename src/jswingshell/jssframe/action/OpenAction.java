@@ -52,7 +52,7 @@ public final class OpenAction extends LoadCommandFile {
 
     private transient Component parent;
 
-    public OpenAction(JFileChooser fileChooser, Component parent, IJssController shellController, String[] args) {
+    public OpenAction(JFileChooser fileChooser, Component parent, IJssController shellController, String... args) {
         super(ACTION_LABEL, ResourceUtils.createImageIcon(ICON_KEY, ACTION_LABEL), shellController, args);
         if (shellController == null) {
             throw new IllegalArgumentException("Shell controller is null");
@@ -67,11 +67,11 @@ public final class OpenAction extends LoadCommandFile {
     }
 
     public OpenAction(JFileChooser fileChooser, Component parent, IJssController shellController) {
-        this(fileChooser, parent, shellController, null);
+        this(fileChooser, parent, shellController, (String[]) null);
     }
 
     public OpenAction(JFileChooser fileChooser, Component parent) {
-        this(fileChooser, parent, null, null);
+        this(fileChooser, parent, null, (String[]) null);
     }
 
     public JFileChooser getFileChooser() {
@@ -145,6 +145,17 @@ public final class OpenAction extends LoadCommandFile {
         }
         putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
         putValue(Action.LONG_DESCRIPTION, this.getHelp(this.getDefaultShellController()));
+    }
+
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
+    @Override
+    public final String getDefaultCommandIdentifier() {
+        return super.getDefaultCommandIdentifier();
     }
 
 }

@@ -142,4 +142,10 @@ public final class RecordStopAction extends AbstractAction implements LocaleChan
         putValue(Action.LONG_DESCRIPTION, this.recordAction.getHelp());
     }
 
+    // #########################################################################
+    @Override
+    public final void putValue(String key, Object newValue) {
+        super.putValue(key, newValue);
+    }
+
 }

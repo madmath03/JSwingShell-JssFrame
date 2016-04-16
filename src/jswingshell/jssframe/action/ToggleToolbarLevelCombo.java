@@ -130,7 +130,7 @@ public final class ToggleToolbarLevelCombo extends jswingshell.action.AbstractJs
     // #########################################################################
     private transient JssFrame frame;
 
-    public ToggleToolbarLevelCombo(boolean selected, JssFrame frame, JssTextAreaController shellController, String[] args) {
+    public ToggleToolbarLevelCombo(boolean selected, JssFrame frame, JssTextAreaController shellController, String... args) {
         super(selected, ACTION_LABEL, shellController, args);
         if (frame == null) {
             throw new IllegalArgumentException("Frame is null");
@@ -139,16 +139,16 @@ public final class ToggleToolbarLevelCombo extends jswingshell.action.AbstractJs
         localeChanged();
     }
 
-    public ToggleToolbarLevelCombo(JssFrame frame, JssTextAreaController shellController, String[] args) {
+    public ToggleToolbarLevelCombo(JssFrame frame, JssTextAreaController shellController, String... args) {
         this(false, frame, shellController, args);
     }
 
     public ToggleToolbarLevelCombo(JssFrame frame, JssTextAreaController shellController) {
-        this(false, frame, shellController, null);
+        this(false, frame, shellController, (String[]) null);
     }
 
     public ToggleToolbarLevelCombo(JssFrame frame) {
-        this(false, frame, null, null);
+        this(false, frame, null, (String[]) null);
     }
 
     public JssFrame getFrame() {

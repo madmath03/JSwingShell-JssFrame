@@ -131,7 +131,7 @@ public final class ToggleToolbarLargeIconsAction extends jswingshell.action.Abst
     // #########################################################################
     private transient JssFrame frame;
 
-    public ToggleToolbarLargeIconsAction(boolean selected, JssFrame frame, JssTextAreaController shellController, String[] args) {
+    public ToggleToolbarLargeIconsAction(boolean selected, JssFrame frame, JssTextAreaController shellController, String... args) {
         super(selected, ACTION_LABEL, shellController, args);
         if (frame == null) {
             throw new IllegalArgumentException("Frame is null");
@@ -140,16 +140,16 @@ public final class ToggleToolbarLargeIconsAction extends jswingshell.action.Abst
         localeChanged();
     }
 
-    public ToggleToolbarLargeIconsAction(JssFrame frame, JssTextAreaController shellController, String[] args) {
+    public ToggleToolbarLargeIconsAction(JssFrame frame, JssTextAreaController shellController, String... args) {
         this(false, frame, shellController, args);
     }
 
     public ToggleToolbarLargeIconsAction(JssFrame frame, JssTextAreaController shellController) {
-        this(false, frame, shellController, null);
+        this(false, frame, shellController, (String[]) null);
     }
 
     public ToggleToolbarLargeIconsAction(JssFrame frame) {
-        this(false, frame, null, null);
+        this(false, frame, null, (String[]) null);
     }
 
     public JssFrame getFrame() {

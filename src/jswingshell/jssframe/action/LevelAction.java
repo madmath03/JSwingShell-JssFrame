@@ -140,38 +140,38 @@ public final class LevelAction extends jswingshell.action.AbstractJssComboAction
     }
 
     public LevelAction(IJssController.PublicationLevel[] items) {
-        this(items, null, null);
+        this(items, null, (String[]) null);
     }
 
     public LevelAction(ComboBoxModel<IJssController.PublicationLevel> aModel) {
-        this(aModel, null, null);
+        this(aModel, null, (String[]) null);
     }
 
     public LevelAction(IJssController shellController) {
-        this(shellController, null);
+        this(shellController, (String[]) null);
     }
 
     public LevelAction(IJssController.PublicationLevel[] items, IJssController shellController) {
-        this(items, shellController, null);
+        this(items, shellController, (String[]) null);
     }
 
     public LevelAction(ComboBoxModel<IJssController.PublicationLevel> aModel, IJssController shellController) {
-        this(aModel, shellController, null);
+        this(aModel, shellController, (String[]) null);
     }
 
-    public LevelAction(IJssController shellController, String[] args) {
+    public LevelAction(IJssController shellController, String... args) {
         super(ACTION_LABEL, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
-    public LevelAction(IJssController.PublicationLevel[] items, IJssController shellController, String[] args) {
+    public LevelAction(IJssController.PublicationLevel[] items, IJssController shellController, String... args) {
         super(items, ACTION_LABEL, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
     }
 
-    public LevelAction(ComboBoxModel<IJssController.PublicationLevel> aModel, IJssController shellController, String[] args) {
+    public LevelAction(ComboBoxModel<IJssController.PublicationLevel> aModel, IJssController shellController, String... args) {
         super(aModel, ACTION_LABEL, shellController, args);
         putValue(Action.ACTION_COMMAND_KEY, getDefaultCommandIdentifier());
         localeChanged();
@@ -294,7 +294,7 @@ public final class LevelAction extends jswingshell.action.AbstractJssComboAction
             return briefHelp;
         }
 
-        // #########################################################################
+        // #####################################################################
         @Override
         public void localeChanged() {
             localeChanged(null);
@@ -304,6 +304,17 @@ public final class LevelAction extends jswingshell.action.AbstractJssComboAction
         public void localeChanged(PropertyChangeEvent evt) {
             resetBriefHelp();
             putValue(Action.SHORT_DESCRIPTION, this.getBriefHelp());
+        }
+
+        // #####################################################################
+        @Override
+        public final void putValue(String key, Object newValue) {
+            super.putValue(key, newValue);
+        }
+
+        @Override
+        public final String getDefaultCommandIdentifier() {
+            return super.getDefaultCommandIdentifier();
         }
     }
 
