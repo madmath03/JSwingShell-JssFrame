@@ -594,7 +594,6 @@ public class JssFrame extends javax.swing.JFrame implements LocaleChangeListener
         ActionWrapper wrappedZoomOutAction = new ActionWrapper(zoomOutAction, displayToolbarButtonNames, displayToolbarButtonIcons, displayToolbarButtonLargeIcons);
 
         FullScreenAction fullScreenAction = (FullScreenAction) actionFactory.getAction(FullScreenAction.DEFAULT_IDENTIFIER);
-        ActionWrapper wrappedFullScreenAction = new ActionWrapper(fullScreenAction, true, false);
 
         RecordAction recordAction = (RecordAction) actionFactory.getAction(RecordAction.DEFAULT_IDENTIFIER);
         RecordStartAction recordStartAction = new RecordStartAction(recordAction);
@@ -642,7 +641,7 @@ public class JssFrame extends javax.swing.JFrame implements LocaleChangeListener
         this.getjMenuZoomItemZoomReset().setAction(zoomFitAction);
         this.getjMenuZoomItemZoomOut().setAction(zoomOutAction);
 
-        this.getjMenuViewCheckBoxItemFullScreen().setAction(wrappedFullScreenAction);
+        this.getjMenuViewCheckBoxItemFullScreen().setAction(fullScreenAction);
 
         this.getjMenuRecordItemStart().setAction(recordStartAction);
         this.getjMenuRecordItemStop().setAction(recordStopAction);

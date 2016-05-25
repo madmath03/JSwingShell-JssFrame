@@ -6,8 +6,8 @@ import java.beans.PropertyChangeEvent;
 import java.util.MissingResourceException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
 import javax.swing.Action;
-import javax.swing.JButton;
 import javax.swing.JToolBar;
 import jswingshell.IJssController;
 import jswingshell.jssframe.JssFrame;
@@ -203,8 +203,8 @@ public final class ToggleToolbarIconsAction extends jswingshell.action.AbstractJ
             if (toolbarButtons != null) {
                 
                 for (Component toolbarComponent : toolbarButtons) {
-                    if (toolbarComponent instanceof JButton) {
-                        JButton toolbarButton = (JButton) toolbarComponent;
+                    if (toolbarComponent instanceof AbstractButton) {
+                        AbstractButton toolbarButton = (AbstractButton) toolbarComponent;
                         if (toolbarButton.getAction() instanceof ActionWrapper) {
                             ActionWrapper action = (ActionWrapper) toolbarButton.getAction();
                             action.setIconAllowed(switchValue);
